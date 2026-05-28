@@ -188,3 +188,36 @@ img { display: block; width: 100%; height: 100%; object-fit: cover; }
   .nav { padding: 20px 24px; }
   .footer { padding: 20px 24px; flex-direction: column; gap: 12px; }
 }
+/* ── カスタムカーソルのスタイル ── */
+/* パソコン画面の時だけカスタムカーソルを有効にする */
+@media (pointer: fine) {
+  body {
+    /* デフォルトの矢印カーソルを非表示にする */
+    cursor: none;
+  }
+  
+  /* リンクやボタンに乗ったときもデフォルトの指マークにさせない */
+  a, button, .work-card, .filter-btn, .work-row {
+    cursor: none !important;
+  }
+
+  .cursor {
+    width: 20px;
+    height: 20px;
+    background-color: var(--white); /* 基本は白 */
+    border-radius: 50%;
+    position: fixed;
+    transform: translate(-50%, -50%);
+    pointer-events: none; /* マウスイベントを透過（クリックの邪魔をしない） */
+    z-index: 99999; /* 一番手前に表示 */
+    mix-blend-mode: difference; /* 【重要】背景が白なら黒、黒なら白に自動反転する魔法のプロパティ */
+    transition: width 0.3s var(--ease-out), height 0.3s var(--ease-out), background-color 0.3s;
+  }
+
+  /* main.jsでリンクに乗った時に 'hover' クラスがつくので、その時の演出 */
+  .cursor.hover {
+    width: 50px; /* ホバー時に一回り大きくする */
+    height: 50px;
+    background-color: var(--white);
+  }
+}
