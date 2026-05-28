@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Contact — Your Name</title>
+  <link rel="stylesheet" href="css/style.css" />
+  <style>
+    .contact-hero {
+      padding: 160px 48px 80px;
+      border-bottom: 0.5px solid var(--gray-300);
+    }
+
+    .contact-hero h1 {
+      font-family: var(--font-serif);
+      font-size: clamp(48px, 8vw, 100px);
+      font-weight: 300;
+      letter-spacing: -0.03em;
+      line-height: 1.0;
+      margin-bottom: 24px;
+    }
+
+    .contact-hero h1 em {
+      font-style: italic;
+      color: var(--gray-500);
+    }
+
+    .contact-hero p {
+      font-size: 14px;
+      font-weight: 300;
+      color: var(--gray-700);
+      max-width: 480px;
+      line-height: 1.9;
+    }
+
+    .contact-body {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+    }
+
+    .contact-form-col {
+      padding: 64px 48px 120px;
+      border-right: 0.5px solid var(--gray-300);
+    }
+
+    .form-group {
+      margin-bottom: 28px;
+    }
+
+    .form-label {
+      display: block;
+      font-size: 10px;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--gray-500);
+      margin-bottom: 10px;
+    }
+
+    .form-input,
+    .form-textarea,
+    .form-select {
+      width: 100%;
+      font-family: var(--font-mono);
+      font-size: 13px;
+      font-weight: 300;
+      color: var(--black);
+      background: transparent;
+      border: none;
+      border-bottom: 0.5px solid var(--gray-300);
+      padding: 10px 0;
+      outline: none;
+      transition: border-color 0.3s;
+      appearance: none;
+    }
+
+    .form-input:focus,
+    .form-textarea:focus,
+    .form-select:focus {
+      border-color: var(--black);
+    }
+
+    .form-input::placeholder,
+    .form-textarea::placeholder {
+      color: var(--gray-300);
+    }
+
+    .form-textarea {
+      min-height: 120px;
+      resize: none;
+    }
+
+    .form-submit {
+      margin-top: 40px;
+      background: var(--black);
+      color: var(--white);
+      font-family: var(--font-mono);
+      font-size: 11px;
+      font-weight: 300;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      padding: 16px 40px;
+      border: none;
+      cursor: none;
+      transition: opacity 0.3s;
+    }
+
+    .form-submit:hover { opacity: 0.7; }
+
+    .form-success {
+      display: none;
+      padding: 32px 0;
+    }
+
+    .form-success p {
+      font-family: var(--font-serif);
+      font-size: 22px;
+      font-weight: 300;
+      font-style: italic;
+      color: var(--gray-500);
+    }
+
+    .contact-info-col {
+      padding: 64px 48px 120px;
+    }
+
+    .contact-info-section {
+      margin-bottom: 48px;
+    }
+
+    .contact-info-label {
+      font-size: 10px;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--gray-500);
+      margin-bottom: 16px;
+    }
+
+    .contact-email {
+      font-family: var(--font-serif);
+      font-size: clamp(18px, 2.5vw, 26px);
+      font-weight: 300;
+      color: var(--black);
+      letter-spacing: -0.01em;
+      transition: color 0.2s;
+    }
+
+    .contact-email:hover { color: var(--gray-500); }
+
+    .contact-meta-list {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    .contact-meta-item {
+      display: flex;
+      gap: 16px;
+      font-size: 13px;
+      font-weight: 300;
+    }
+
+    .contact-meta-key {
+      color: var(--gray-500);
+      min-width: 80px;
+    }
+
+    .contact-meta-val {
+      color: var(--black);
+    }
+
+    @media (max-width: 768px) {
+      .contact-hero { padding: 120px 24px 60px; }
+      .contact-body { grid-template-columns: 1fr; }
+      .contact-form-col { padding: 48px 24px 80px; border-right: none; border-bottom: 0.5px solid var(--gray-300); }
+      .contact-info-col { padding: 48px 24px 80px; }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="cursor"></div>
+
+  <nav class="nav">
+    <a href="index.html" class="nav-logo">Your Name</a>
+    <ul class="nav-links">
+      <li><a href="works.html">Works</a></li>
+      <li><a href="about.html">About</a></li>
+      <li><a href="contact.html" class="active">Contact</a></li>
+    </ul>
+  </nav>
+
+  <div class="contact-hero">
+    <h1 class="js-scroll-reveal">Let's<br><em>talk.</em></h1>
+    <p class="js-scroll-reveal">ブランディング、グラフィックデザイン、イラストなど、お気軽にご相談ください。まずはざっくりとしたご要望でも歓迎です。</p>
+  </div>
+
+  <div class="contact-body">
+    <div class="contact-form-col">
+      <form id="contactForm" class="js-scroll-reveal">
+        <div class="form-group">
+          <label class="form-label" for="name">Name</label>
+          <input class="form-input" type="text" id="name" placeholder="山田 太郎" required />
+        </div>
+        <div class="form-group">
+          <label class="form-label" for="email">Email</label>
+          <input class="form-input" type="email" id="email" placeholder="hello@example.com" required />
+        </div>
+        <div class="form-group">
+          <label class="form-label" for="type">Type of work</label>
+          <select class="form-select" id="type">
+            <option value="">Select...</option>
+            <option>Branding / Logo</option>
+            <option>Illustration</option>
+            <option>Graphic Design</option>
+            <option>Other</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label class="form-label" for="message">Message</label>
+          <textarea class="form-textarea" id="message" placeholder="ご要望、スケジュール、予算感などをお聞かせください。" required></textarea>
+        </div>
+        <button type="submit" class="form-submit">Send message</button>
+      </form>
+
+      <div class="form-success" id="formSuccess">
+        <p>Thank you. I'll get back to you within 1–2 business days.</p>
+      </div>
+    </div>
+
+    <div class="contact-info-col">
+      <div class="contact-info-section js-scroll-reveal">
+        <div class="contact-info-label">Email</div>
+        <a href="mailto:hello@yourname.com" class="contact-email">hello@yourname.com</a>
+      </div>
+
+      <div class="contact-info-section js-scroll-reveal">
+        <div class="contact-info-label">Details</div>
+        <div class="contact-meta-list">
+          <div class="contact-meta-item">
+            <span class="contact-meta-key">Location</span>
+            <span class="contact-meta-val">Tokyo, Japan</span>
+          </div>
+          <div class="contact-meta-item">
+            <span class="contact-meta-key">Response</span>
+            <span class="contact-meta-val">1–2 business days</span>
+          </div>
+          <div class="contact-meta-item">
+            <span class="contact-meta-key">Status</span>
+            <span class="contact-meta-val">Available for work</span>
+          </div>
+          <div class="contact-meta-item">
+            <span class="contact-meta-key">Remote</span>
+            <span class="contact-meta-val">Yes, worldwide</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <footer class="footer">
+    <div class="footer-left">© 2024 Your Name</div>
+    <div class="footer-right">
+      <div class="footer-dot"></div>
+      Available for work
+    </div>
+  </footer>
+
+  <script src="js/main.js"></script>
+  <script>
+    document.getElementById('contactForm').addEventListener('submit', function(e) {
+      e.preventDefault();
+      this.style.display = 'none';
+      document.getElementById('formSuccess').style.display = 'block';
+    });
+  </script>
+</body>
+</html>

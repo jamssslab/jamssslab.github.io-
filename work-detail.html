@@ -1,0 +1,335 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Koto Branding — Your Name</title>
+  <link rel="stylesheet" href="css/style.css" />
+  <style>
+    .detail-hero {
+      height: 70vh;
+      background: #1a1a18;
+      display: flex;
+      align-items: flex-end;
+      padding: 0 48px 64px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .detail-hero-bg {
+      position: absolute;
+      inset: 0;
+      opacity: 0;
+      animation: fadeIn 1.2s var(--ease-out) forwards;
+    }
+
+    @keyframes fadeIn { to { opacity: 1; } }
+
+    .detail-hero-content {
+      position: relative;
+      z-index: 1;
+      opacity: 0;
+      animation: fadeUp 1s var(--ease-out) 0.4s forwards;
+    }
+
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: none; }
+    }
+
+    .detail-hero-cat {
+      font-size: 11px;
+      color: var(--gray-500);
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      margin-bottom: 12px;
+    }
+
+    .detail-hero h1 {
+      font-family: var(--font-serif);
+      font-size: clamp(36px, 6vw, 72px);
+      font-weight: 300;
+      color: var(--white);
+      letter-spacing: -0.02em;
+      line-height: 1.1;
+    }
+
+    .detail-body {
+      display: grid;
+      grid-template-columns: 1fr 320px;
+      gap: 0;
+    }
+
+    .detail-main {
+      padding: 72px 64px 120px 48px;
+      border-right: 0.5px solid var(--gray-300);
+    }
+
+    .detail-section {
+      margin-bottom: 56px;
+    }
+
+    .detail-section-label {
+      font-size: 10px;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--gray-500);
+      margin-bottom: 16px;
+    }
+
+    .detail-section p {
+      font-size: 14px;
+      font-weight: 300;
+      color: var(--gray-700);
+      line-height: 1.9;
+    }
+
+    .detail-img-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+      margin-top: 12px;
+    }
+
+    .detail-img {
+      aspect-ratio: 4/3;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .detail-img-label {
+      font-size: 10px;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
+    .detail-sidebar {
+      padding: 72px 48px 120px;
+      position: sticky;
+      top: 80px;
+      align-self: start;
+    }
+
+    .meta-list {
+      margin-bottom: 48px;
+    }
+
+    .meta-item {
+      padding: 14px 0;
+      border-bottom: 0.5px solid var(--gray-300);
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+    }
+
+    .meta-item:first-child {
+      border-top: 0.5px solid var(--gray-300);
+    }
+
+    .meta-key {
+      font-size: 10px;
+      color: var(--gray-500);
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+    }
+
+    .meta-val {
+      font-size: 14px;
+      font-weight: 300;
+    }
+
+    .cta-block {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    .btn-fill {
+      display: block;
+      text-align: center;
+      background: var(--black);
+      color: var(--white);
+      font-family: var(--font-mono);
+      font-size: 11px;
+      font-weight: 300;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      padding: 14px;
+      transition: opacity 0.2s;
+    }
+
+    .btn-fill:hover { opacity: 0.75; }
+
+    .btn-line {
+      display: block;
+      text-align: center;
+      border: 0.5px solid var(--gray-300);
+      color: var(--black);
+      font-family: var(--font-mono);
+      font-size: 11px;
+      font-weight: 300;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      padding: 14px;
+      transition: border-color 0.2s, background 0.2s;
+    }
+
+    .btn-line:hover {
+      border-color: var(--black);
+      background: var(--off-white);
+    }
+
+    .work-nav {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      border-top: 0.5px solid var(--gray-300);
+    }
+
+    .work-nav-item {
+      padding: 32px 48px;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      transition: background 0.3s;
+    }
+
+    .work-nav-item:first-child {
+      border-right: 0.5px solid var(--gray-300);
+    }
+
+    .work-nav-item:hover { background: var(--off-white); }
+
+    .work-nav-dir {
+      font-size: 10px;
+      color: var(--gray-500);
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+    }
+
+    .work-nav-title {
+      font-family: var(--font-serif);
+      font-size: 20px;
+      font-weight: 300;
+      letter-spacing: -0.01em;
+    }
+
+    .work-nav-item:last-child {
+      text-align: right;
+    }
+
+    @media (max-width: 768px) {
+      .detail-hero { padding: 0 24px 48px; }
+      .detail-body { grid-template-columns: 1fr; }
+      .detail-main { padding: 48px 24px 80px; border-right: none; }
+      .detail-sidebar { padding: 0 24px 80px; position: static; }
+      .work-nav-item { padding: 24px; }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="cursor"></div>
+
+  <nav class="nav">
+    <a href="index.html" class="nav-logo">Your Name</a>
+    <ul class="nav-links">
+      <li><a href="works.html">← Works</a></li>
+      <li><a href="about.html">About</a></li>
+      <li><a href="contact.html">Contact</a></li>
+    </ul>
+  </nav>
+
+  <div class="detail-hero">
+    <div class="detail-hero-bg" style="background: #1a1a18;"></div>
+    <!-- 実際の画像: <img src="images/koto-hero.jpg" alt="Koto Branding"> -->
+    <div class="detail-hero-content">
+      <p class="detail-hero-cat">Graphic Design · Brand Identity · 2024</p>
+      <h1>Koto<br>Branding</h1>
+    </div>
+  </div>
+
+  <div class="detail-body">
+    <div class="detail-main">
+
+      <div class="detail-section js-scroll-reveal">
+        <div class="detail-section-label">Overview</div>
+        <p>京都の小さな器屋「Koto」のブランドアイデンティティを一から制作しました。日本の伝統工芸と現代のライフスタイルを橋渡しするブランドとして、静けさと洗練を両立したビジュアルを目指しました。</p>
+      </div>
+
+      <div class="detail-section js-scroll-reveal">
+        <div class="detail-section-label">Challenge</div>
+        <p>伝統的すぎず、モダンすぎない絶妙なバランスが求められました。ターゲットは30〜50代の暮らしに敏感な層。古さを感じさせず、しかし手仕事の温かみを伝えることが最大の課題でした。</p>
+      </div>
+
+      <div class="detail-section js-scroll-reveal">
+        <div class="detail-section-label">Approach</div>
+        <p>ロゴは器の断面をモチーフにした幾何学形と、細身のセリフ書体を組み合わせ。カラーはオフホワイトと深みのあるカーキを軸に設定しました。名刺・包装紙・ショップカードまで一貫したトーンで展開しています。</p>
+      </div>
+
+      <div class="detail-img-grid js-scroll-reveal">
+        <div class="detail-img" style="background: #efefed;">
+          <span class="detail-img-label" style="color: #aaa;">Logo</span>
+        </div>
+        <div class="detail-img" style="background: #1a1a18;">
+          <span class="detail-img-label" style="color: #555;">Business card</span>
+        </div>
+        <div class="detail-img" style="background: #c8c5be;">
+          <span class="detail-img-label" style="color: #888;">Packaging</span>
+        </div>
+        <div class="detail-img" style="background: #e8e4dc;">
+          <span class="detail-img-label" style="color: #aaa;">Color palette</span>
+        </div>
+      </div>
+
+    </div>
+
+    <aside class="detail-sidebar">
+      <div class="meta-list js-scroll-reveal">
+        <div class="meta-item">
+          <span class="meta-key">Client</span>
+          <span class="meta-val">Koto, 京都</span>
+        </div>
+        <div class="meta-item">
+          <span class="meta-key">Category</span>
+          <span class="meta-val">Brand Identity</span>
+        </div>
+        <div class="meta-item">
+          <span class="meta-key">Year</span>
+          <span class="meta-val">2024</span>
+        </div>
+        <div class="meta-item">
+          <span class="meta-key">Scope</span>
+          <span class="meta-val">Logo · Print · Web</span>
+        </div>
+      </div>
+
+      <div class="cta-block js-scroll-reveal">
+        <a href="contact.html" class="btn-fill">Hire me for this</a>
+        <a href="contact.html" class="btn-line">Get in touch</a>
+      </div>
+    </aside>
+  </div>
+
+  <div class="work-nav">
+    <a href="work-detail.html" class="work-nav-item js-scroll-reveal">
+      <span class="work-nav-dir">← Previous</span>
+      <span class="work-nav-title">Mori Characters</span>
+    </a>
+    <a href="work-detail.html" class="work-nav-item js-scroll-reveal">
+      <span class="work-nav-dir">Next →</span>
+      <span class="work-nav-title">Night Series</span>
+    </a>
+  </div>
+
+  <footer class="footer">
+    <div class="footer-left">© 2024 Your Name</div>
+    <div class="footer-right">
+      <div class="footer-dot"></div>
+      Available for work
+    </div>
+  </footer>
+
+  <script src="js/main.js"></script>
+</body>
+</html>

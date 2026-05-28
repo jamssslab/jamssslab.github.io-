@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>About — Your Name</title>
+  <link rel="stylesheet" href="css/style.css" />
+  <style>
+    .about-hero {
+      padding: 160px 48px 80px;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 80px;
+      align-items: end;
+      border-bottom: 0.5px solid var(--gray-300);
+    }
+
+    .about-hero h1 {
+      font-family: var(--font-serif);
+      font-size: clamp(48px, 8vw, 100px);
+      font-weight: 300;
+      letter-spacing: -0.03em;
+      line-height: 1.0;
+    }
+
+    .about-hero h1 em {
+      font-style: italic;
+      color: var(--gray-500);
+    }
+
+    .about-hero-right {
+      padding-bottom: 8px;
+    }
+
+    .about-hero-right p {
+      font-size: 15px;
+      font-weight: 300;
+      line-height: 1.9;
+      color: var(--gray-700);
+    }
+
+    .about-body {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+    }
+
+    .about-photo-col {
+      padding: 64px 48px;
+      border-right: 0.5px solid var(--gray-300);
+    }
+
+    .about-photo {
+      width: 100%;
+      aspect-ratio: 3/4;
+      background: var(--gray-100);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 16px;
+      overflow: hidden;
+      position: relative;
+    }
+
+    .about-photo img {
+      transition: transform 0.8s var(--ease-out);
+    }
+
+    .about-photo:hover img {
+      transform: scale(1.03);
+    }
+
+    .about-photo-label {
+      font-size: 10px;
+      color: var(--gray-500);
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+    }
+
+    .about-photo-caption {
+      font-size: 11px;
+      color: var(--gray-500);
+      margin-top: 8px;
+    }
+
+    .about-info-col {
+      padding: 64px 48px;
+    }
+
+    .about-section {
+      margin-bottom: 48px;
+    }
+
+    .about-section-label {
+      font-size: 10px;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--gray-500);
+      margin-bottom: 16px;
+    }
+
+    .about-section p {
+      font-size: 14px;
+      font-weight: 300;
+      color: var(--gray-700);
+      line-height: 1.9;
+    }
+
+    .skills-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 8px;
+    }
+
+    .skill-item {
+      font-size: 12px;
+      font-weight: 300;
+      color: var(--gray-700);
+      padding: 10px 0;
+      border-bottom: 0.5px solid var(--gray-100);
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .skill-item::before {
+      content: '—';
+      color: var(--gray-300);
+      font-size: 10px;
+    }
+
+    .about-cta {
+      margin-top: 48px;
+      padding-top: 48px;
+      border-top: 0.5px solid var(--gray-300);
+      display: flex;
+      gap: 20px;
+      align-items: center;
+    }
+
+    .text-link {
+      font-size: 11px;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      transition: gap 0.3s var(--ease-out);
+    }
+
+    .text-link:hover { gap: 16px; }
+    .text-link::after { content: '→'; }
+
+    .text-link-muted {
+      font-size: 11px;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--gray-500);
+    }
+
+    @media (max-width: 768px) {
+      .about-hero { grid-template-columns: 1fr; padding: 120px 24px 60px; gap: 32px; }
+      .about-body { grid-template-columns: 1fr; }
+      .about-photo-col { padding: 40px 24px; border-right: none; border-bottom: 0.5px solid var(--gray-300); }
+      .about-info-col { padding: 40px 24px; }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="cursor"></div>
+
+  <nav class="nav">
+    <a href="index.html" class="nav-logo">Your Name</a>
+    <ul class="nav-links">
+      <li><a href="works.html">Works</a></li>
+      <li><a href="about.html" class="active">About</a></li>
+      <li><a href="contact.html">Contact</a></li>
+    </ul>
+  </nav>
+
+  <div class="about-hero">
+    <h1 class="js-scroll-reveal">About<br><em>me.</em></h1>
+    <div class="about-hero-right js-scroll-reveal">
+      <p>グラフィックデザインとイラストを軸に、フリーランスとして活動しています。ブランドの言語を視覚で語ることが、私の仕事です。</p>
+    </div>
+  </div>
+
+  <div class="about-body">
+    <div class="about-photo-col">
+      <div class="about-photo js-scroll-reveal">
+        <!-- 実際の写真: <img src="images/profile.jpg" alt="Your Name"> -->
+        <span class="about-photo-label">Profile photo</span>
+      </div>
+      <p class="about-photo-caption">Your Name — Tokyo, Japan</p>
+    </div>
+
+    <div class="about-info-col">
+
+      <div class="about-section js-scroll-reveal">
+        <div class="about-section-label">Profile</div>
+        <p>東京を拠点に活動するグラフィックデザイナー・イラストレーター。ブランディング、エディトリアル、パッケージデザインを中心に、記憶に残るビジュアルを制作しています。</p>
+      </div>
+
+      <div class="about-section js-scroll-reveal">
+        <div class="about-section-label">Background</div>
+        <p>多摩美術大学グラフィックデザイン科卒業後、デザインスタジオに5年勤務。2020年よりフリーランスとして独立。国内外のクライアントと協業しながら、グラフィックとイラストを横断した表現を探っています。</p>
+      </div>
+
+      <div class="about-section js-scroll-reveal">
+        <div class="about-section-label">Skills</div>
+        <div class="skills-grid">
+          <span class="skill-item">Brand Identity</span>
+          <span class="skill-item">Illustration</span>
+          <span class="skill-item">Editorial Design</span>
+          <span class="skill-item">Packaging</span>
+          <span class="skill-item">Typography</span>
+          <span class="skill-item">Art Direction</span>
+        </div>
+      </div>
+
+      <div class="about-cta js-scroll-reveal">
+        <a href="contact.html" class="text-link">Get in touch</a>
+        <a href="works.html" class="text-link-muted">View works →</a>
+      </div>
+
+    </div>
+  </div>
+
+  <footer class="footer">
+    <div class="footer-left">© 2024 Your Name</div>
+    <div class="footer-right">
+      <div class="footer-dot"></div>
+      Available for work
+    </div>
+  </footer>
+
+  <script src="js/main.js"></script>
+</body>
+</html>

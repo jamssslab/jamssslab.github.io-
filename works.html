@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Works — Your Name</title>
+  <link rel="stylesheet" href="css/style.css" />
+  <style>
+    .page-hero {
+      padding: 160px 48px 80px;
+      border-bottom: 0.5px solid var(--gray-300);
+    }
+
+    .page-hero-label {
+      font-size: 11px;
+      color: var(--gray-500);
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      margin-bottom: 20px;
+    }
+
+    .page-hero h1 {
+      font-family: var(--font-serif);
+      font-size: clamp(40px, 7vw, 88px);
+      font-weight: 300;
+      letter-spacing: -0.03em;
+      line-height: 1.0;
+    }
+
+    .page-hero h1 em {
+      font-style: italic;
+      color: var(--gray-500);
+    }
+
+    .filter-bar {
+      padding: 24px 48px;
+      display: flex;
+      gap: 4px;
+      border-bottom: 0.5px solid var(--gray-300);
+    }
+
+    .filter-btn {
+      font-family: var(--font-mono);
+      font-size: 11px;
+      font-weight: 300;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      padding: 8px 16px;
+      border: 0.5px solid transparent;
+      background: transparent;
+      color: var(--gray-500);
+      cursor: none;
+      transition: all 0.2s;
+    }
+
+    .filter-btn:hover { color: var(--black); }
+
+    .filter-btn.active {
+      border-color: var(--black);
+      color: var(--black);
+    }
+
+    .works-list {
+      padding: 0 48px 120px;
+    }
+
+    .work-row {
+      display: grid;
+      grid-template-columns: 64px 1fr 200px 120px;
+      align-items: center;
+      gap: 32px;
+      padding: 28px 0;
+      border-bottom: 0.5px solid var(--gray-300);
+      transition: background 0.3s;
+      position: relative;
+      text-decoration: none;
+      color: inherit;
+    }
+
+    .work-row::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: var(--off-white);
+      transform: scaleY(0);
+      transform-origin: bottom;
+      transition: transform 0.3s var(--ease-out);
+      z-index: 0;
+    }
+
+    .work-row:hover::before { transform: scaleY(1); }
+
+    .work-row > * { position: relative; z-index: 1; }
+
+    .work-row-num {
+      font-size: 11px;
+      color: var(--gray-300);
+      font-weight: 300;
+    }
+
+    .work-row-title {
+      font-family: var(--font-serif);
+      font-size: clamp(18px, 2.5vw, 26px);
+      font-weight: 300;
+      letter-spacing: -0.01em;
+      transition: transform 0.3s var(--ease-out);
+    }
+
+    .work-row:hover .work-row-title { transform: translateX(8px); }
+
+    .work-row-cat {
+      font-size: 11px;
+      color: var(--gray-500);
+      letter-spacing: 0.08em;
+    }
+
+    .work-row-year {
+      font-size: 11px;
+      color: var(--gray-500);
+      text-align: right;
+    }
+
+    /* Hover image preview */
+    .work-preview {
+      position: fixed;
+      width: 280px;
+      height: 200px;
+      pointer-events: none;
+      z-index: 50;
+      opacity: 0;
+      transform: scale(0.95);
+      transition: opacity 0.3s var(--ease-out), transform 0.3s var(--ease-out);
+    }
+
+    .work-preview.visible {
+      opacity: 1;
+      transform: scale(1);
+    }
+
+    .work-preview-inner {
+      width: 100%;
+      height: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .work-preview-label {
+      font-size: 11px;
+      color: var(--gray-500);
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
+    [data-hidden="true"] { display: none; }
+
+    @media (max-width: 768px) {
+      .page-hero { padding: 120px 24px 60px; }
+      .filter-bar { padding: 20px 24px; }
+      .works-list { padding: 0 24px 80px; }
+      .work-row { grid-template-columns: 40px 1fr; gap: 16px; }
+      .work-row-cat, .work-row-year { display: none; }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="cursor"></div>
+
+  <nav class="nav">
+    <a href="index.html" class="nav-logo">Your Name</a>
+    <ul class="nav-links">
+      <li><a href="works.html" class="active">Works</a></li>
+      <li><a href="about.html">About</a></li>
+      <li><a href="contact.html">Contact</a></li>
+    </ul>
+  </nav>
+
+  <!-- Hover preview -->
+  <div class="work-preview" id="workPreview">
+    <div class="work-preview-inner" id="workPreviewInner">
+      <span class="work-preview-label">Preview</span>
+    </div>
+  </div>
+
+  <div class="page-hero">
+    <p class="page-hero-label js-scroll-reveal">Selected Works</p>
+    <h1 class="js-scroll-reveal">All <em>works</em></h1>
+  </div>
+
+  <div class="filter-bar">
+    <button class="filter-btn active" data-filter="all">All</button>
+    <button class="filter-btn" data-filter="graphic">Graphic</button>
+    <button class="filter-btn" data-filter="illustration">Illustration</button>
+  </div>
+
+  <div class="works-list" id="worksList">
+
+    <a href="work-detail.html" class="work-row js-scroll-reveal" data-category="graphic"
+       data-bg="#1a1a18" data-color="#555">
+      <span class="work-row-num">01</span>
+      <span class="work-row-title">Koto Branding</span>
+      <span class="work-row-cat">Graphic Design</span>
+      <span class="work-row-year">2024</span>
+    </a>
+
+    <a href="work-detail.html" class="work-row js-scroll-reveal" data-category="illustration"
+       data-bg="#e8e4dc" data-color="#888">
+      <span class="work-row-num">02</span>
+      <span class="work-row-title">Night Series</span>
+      <span class="work-row-cat">Illustration</span>
+      <span class="work-row-year">2024</span>
+    </a>
+
+    <a href="work-detail.html" class="work-row js-scroll-reveal" data-category="graphic"
+       data-bg="#d0cfc8" data-color="#777">
+      <span class="work-row-num">03</span>
+      <span class="work-row-title">Forest Poster</span>
+      <span class="work-row-cat">Graphic Design</span>
+      <span class="work-row-year">2024</span>
+    </a>
+
+    <a href="work-detail.html" class="work-row js-scroll-reveal" data-category="illustration"
+       data-bg="#2c2c28" data-color="#555">
+      <span class="work-row-num">04</span>
+      <span class="work-row-title">Zine Vol.3</span>
+      <span class="work-row-cat">Illustration</span>
+      <span class="work-row-year">2023</span>
+    </a>
+
+    <a href="work-detail.html" class="work-row js-scroll-reveal" data-category="graphic"
+       data-bg="#c8c5be" data-color="#666">
+      <span class="work-row-num">05</span>
+      <span class="work-row-title">Herb Co. Package</span>
+      <span class="work-row-cat">Graphic Design</span>
+      <span class="work-row-year">2023</span>
+    </a>
+
+    <a href="work-detail.html" class="work-row js-scroll-reveal" data-category="illustration"
+       data-bg="#ebebea" data-color="#aaa">
+      <span class="work-row-num">06</span>
+      <span class="work-row-title">Mori Characters</span>
+      <span class="work-row-cat">Illustration</span>
+      <span class="work-row-year">2023</span>
+    </a>
+
+  </div>
+
+  <footer class="footer">
+    <div class="footer-left">© 2024 Your Name</div>
+    <div class="footer-right">
+      <div class="footer-dot"></div>
+      Available for work
+    </div>
+  </footer>
+
+  <script src="js/main.js"></script>
+  <script>
+    // Filter
+    const filterBtns = document.querySelectorAll('.filter-btn');
+    const rows = document.querySelectorAll('.work-row');
+
+    filterBtns.forEach(btn => {
+      btn.addEventListener('click', () => {
+        filterBtns.forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+        const filter = btn.dataset.filter;
+        let i = 1;
+        rows.forEach(row => {
+          const match = filter === 'all' || row.dataset.category === filter;
+          row.dataset.hidden = match ? 'false' : 'true';
+          if (match) {
+            row.querySelector('.work-row-num').textContent = String(i++).padStart(2, '0');
+          }
+        });
+      });
+    });
+
+    // Preview on hover
+    const preview = document.getElementById('workPreview');
+    const previewInner = document.getElementById('workPreviewInner');
+
+    rows.forEach(row => {
+      row.addEventListener('mouseenter', () => {
+        previewInner.style.background = row.dataset.bg || '#eee';
+        preview.classList.add('visible');
+      });
+      row.addEventListener('mouseleave', () => {
+        preview.classList.remove('visible');
+      });
+      row.addEventListener('mousemove', e => {
+        preview.style.left = (e.clientX + 24) + 'px';
+        preview.style.top = (e.clientY - 100) + 'px';
+      });
+    });
+  </script>
+</body>
+</html>
